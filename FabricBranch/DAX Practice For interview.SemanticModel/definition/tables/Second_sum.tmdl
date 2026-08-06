@@ -1,0 +1,55 @@
+table Second_sum
+	lineageTag: eaa830da-49e8-4dca-99df-3b10a787c48e
+
+	column Category
+		lineageTag: 76c0440b-5f84-4f1c-83bd-8ec0558b4c80
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Week_cal_table[Category]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_value
+		formatString: 0
+		lineageTag: 01ae80f7-85d7-49f3-8671-e07a9d41b9b2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_value]
+
+		annotation SummarizationSetBy = Automatic
+
+	column _rank
+		formatString: 0
+		lineageTag: a5ac32ed-cfb3-45b4-b01a-525b6028837a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [_rank]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Second_sum = calculated
+		mode: import
+		source = ```
+				
+				
+				var _agg_table = SUMMARIZE(
+				    Week_cal_table,
+				    Week_cal_table[Category],
+				    "Total_value",SUM(Week_cal_table[Value]))
+				
+				var _rank_column_added_table = 
+				    ADDCOLUMNS(
+				        _agg_table,
+				        "_rank",RANKX(_agg_table,
+				            CALCULATE(SUM(Week_cal_table[Value])),
+				            ,DESC))
+				
+				var _second_highest_only = FILTER(
+				    _rank_column_added_table,
+				    [_rank] = 2)
+				
+				RETURN _rank_column_added_table
+				```
+
+	annotation PBI_Id = 7720a8b54c994483ba47b789bc11f521
+

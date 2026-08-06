@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "0a3999894c7890952e5d",
+  "position": {
+    "x": 709.14385072535231,
+    "y": 173.39942387044871,
+    "z": 1000,
+    "height": 307.33553058417459,
+    "width": 437.68406301092568,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX2"
+                    }
+                  },
+                  "Property": "Second_highest"
+                }
+              },
+              "queryRef": "DAX2.Second_highest",
+              "nativeQueryRef": "Second_highest"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "DAX2"
+                  }
+                },
+                "Property": "Second_highest"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

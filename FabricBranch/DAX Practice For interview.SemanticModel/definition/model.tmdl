@@ -1,0 +1,30 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["financials","DAX","Week_cal_table","DAX2"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table financials
+ref table DateTableTemplate_7f81dde3-313c-4462-bdd8-791be19f7f63
+ref table LocalDateTable_36ef8953-7920-4e6f-be0a-88c9c8a85982
+ref table DAX
+ref table Series_table
+ref table Week_cal_table
+ref table LocalDateTable_1354cf9d-e047-4e82-a6be-80d8122367c4
+ref table test_table
+ref table Second_sum
+ref table test_crossJOin
+ref table test_table_rank
+ref table DAX2
+ref table Second_highest_table
+
+ref cultureInfo en-IN
+
