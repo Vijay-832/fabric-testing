@@ -42,6 +42,20 @@
               },
               "queryRef": "DAX.ConcatX",
               "nativeQueryRef": "ConcatX"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX"
+                    }
+                  },
+                  "Property": "Measure"
+                }
+              },
+              "queryRef": "DAX.Measure",
+              "nativeQueryRef": "Measure"
             }
           ]
         }
