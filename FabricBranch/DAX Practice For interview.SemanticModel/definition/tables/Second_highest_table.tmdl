@@ -1,0 +1,58 @@
+table Second_highest_table
+	lineageTag: 6a37499e-8d0f-4b9a-9aa4-c5dd371ab5db
+
+	column Segment
+		lineageTag: be86b500-94f1-4008-a170-31139b12e7f0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: financials[Segment]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_profit
+		lineageTag: ce895d08-810c-4410-9f81-a25fd7510168
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_profit]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _rank
+		formatString: 0
+		lineageTag: cad1f6f2-cf39-4140-9758-443aadc001a1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [_rank]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Second_highest_table = calculated
+		mode: import
+		source = ```
+				
+				
+				var _agg_table = 
+				
+				ADDCOLUMNS(
+				SUMMARIZE(
+				    financials,
+				    financials[Segment],
+				    "Total_profit",SUM(financials[Profit])
+				),
+				"_rank",RANKX(
+				    ALL(financials[Segment]),
+				    CALCULATE(SUM(financials[Profit])),,DESC
+				))
+				
+				var second_highest = FILTER(
+				    _agg_table,
+				    [_rank] = 2
+				)
+				
+				RETURN second_highest
+				```
+
+	annotation PBI_Id = 7b653af8d1994c5287b0c04f18283988
+

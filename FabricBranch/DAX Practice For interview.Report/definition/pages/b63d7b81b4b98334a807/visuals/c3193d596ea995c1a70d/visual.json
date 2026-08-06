@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "c3193d596ea995c1a70d",
+  "position": {
+    "x": 639.78408117717277,
+    "y": 29.896452391456673,
+    "z": 0,
+    "height": 145.89468767030857,
+    "width": 480.73495445462333,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Week_cal_table"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Week_cal_table.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Week_cal_table"
+                        }
+                      },
+                      "Property": "Value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Week_cal_table.Value)",
+              "nativeQueryRef": "Sum of Value"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX"
+                    }
+                  },
+                  "Property": "Measure"
+                }
+              },
+              "queryRef": "DAX.Measure",
+              "nativeQueryRef": "Measure"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "b15841c8760d00875e39",
+  "position": {
+    "x": 843.07995743907816,
+    "y": 351.5822801235305,
+    "z": 7000,
+    "height": 352.77813821918875,
+    "width": 426.9213401500013,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Week_cal_table"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Week_cal_table.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX"
+                    }
+                  },
+                  "Property": "ConcatX"
+                }
+              },
+              "queryRef": "DAX.ConcatX",
+              "nativeQueryRef": "ConcatX"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a089d603f0f5c0d450e3",
+  "position": {
+    "x": 716.12516306097211,
+    "y": 105.47579921053078,
+    "z": 5000,
+    "height": 234.54486929710134,
+    "width": 553.74794585528662,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Week_cal_table"
+                    }
+                  },
+                  "Property": "Weeknumber"
+                }
+              },
+              "queryRef": "Sum(Week_cal_table.Weeknumber)",
+              "nativeQueryRef": "Weeknumber"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Week_cal_table"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Week_cal_table.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Week_cal_table"
+                        }
+                      },
+                      "Property": "Value"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Week_cal_table.Value)",
+              "nativeQueryRef": "Sum of Value"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX"
+                    }
+                  },
+                  "Property": "week_on_week_comparison"
+                }
+              },
+              "queryRef": "DAX.week_column_week_comparison",
+              "nativeQueryRef": "week_on_week_comparison"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Week_cal_table"
+                  }
+                },
+                "Property": "Category"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
