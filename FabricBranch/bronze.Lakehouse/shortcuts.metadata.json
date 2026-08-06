@@ -1,0 +1,14 @@
+[
+  {
+    "name": "employee",
+    "path": "/Files",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/employee",
+        "itemId": "4fb4000a-0844-40fd-a30e-624d91851bbe",
+        "workspaceId": "b098036c-3727-4985-896e-383ba699df98"
+      }
+    }
+  }
+]
