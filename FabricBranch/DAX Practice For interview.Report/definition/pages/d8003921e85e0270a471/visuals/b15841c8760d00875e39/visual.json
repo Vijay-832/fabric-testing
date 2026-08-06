@@ -56,6 +56,20 @@
               },
               "queryRef": "DAX.Measure",
               "nativeQueryRef": "Measure"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DAX"
+                    }
+                  },
+                  "Property": "moving_avg_3_m_page_3"
+                }
+              },
+              "queryRef": "DAX.moving_avg_3_m_page_3",
+              "nativeQueryRef": "moving_avg_3_m_page_3"
             }
           ]
         }
