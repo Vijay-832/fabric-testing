@@ -1,0 +1,20 @@
+table Series_table
+	lineageTag: 7dcd9c8a-c17d-4bf5-a051-b206270ab285
+
+	column Value_series
+		formatString: 0
+		lineageTag: 4525aa67-7741-41c1-8a8c-e941870962f1
+		summarizeBy: sum
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Series_table = calculated
+		mode: import
+		source =
+				GENERATESERIES(
+				     1,
+				     5)
+
+	annotation PBI_Id = b22de6749f814aa8af355c59a8f18d52
+

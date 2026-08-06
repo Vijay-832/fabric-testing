@@ -1,0 +1,65 @@
+table Week_cal_table
+	lineageTag: 7074700b-8934-4d20-8c6b-ff0451472b33
+
+	measure _sum_ =
+			CALCULATE(
+			    SUM(Week_cal_table[Value]
+			    ))
+		formatString: 0
+		lineageTag: e769d008-84bd-4a74-8daa-b203467af67a
+
+	column Category
+		dataType: string
+		lineageTag: f33d7c0c-5b42-4c88-87db-73c66694a9d9
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value
+		dataType: int64
+		formatString: 0
+		lineageTag: 77742aa3-6860-4d68-9bbd-8743e9cd2f9d
+		summarizeBy: sum
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 59c11564-fcf3-4bc8-bbf8-3f549acec913
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: b5d288ff-dc51-4d8c-9f0e-eb3bea4eb988
+			defaultHierarchy: LocalDateTable_1354cf9d-e047-4e82-a6be-80d8122367c4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weeknumber = WEEKNUM(Week_cal_table[Date])
+		dataType: double
+		lineageTag: e76057d9-f9bd-4739-aef8-3bc129e315a1
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Week_cal_table = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("bc1RCsAgCIDhu/jcoFyWr2u7RXT/a0wbbDQF8eFDfnuHAwKkKCumTQYjZhjh8X06GqfpvHgTYqejjk6nvX3bKeqJFj+FstNXr05fnW1emcjmL31bbF69ss1/92x8//fHDQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Category = _t, Value = _t, Date = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Category", type text}, {"Value", Int64.Type}, {"Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
